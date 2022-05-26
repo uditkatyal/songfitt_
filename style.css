@@ -1,0 +1,49 @@
+body {
+  color: rgb(45, 49, 45);
+  background-color: #22222218;
+}
+
+.stButton > button {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  color: rgb(38, 39, 48);
+  padding: 0.25rem 0.75rem;
+  position: relative;
+  text-decoration: none;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: aquamarine;
+  border-image: initial;
+}
+
+.stButton > button:hover {
+  border-color: rgb(246, 51, 102);
+  color: rgb(246, 51, 102);
+}
+
+.stButton > button:active {
+  box-shadow: none;
+  background-color: rgb(246, 51, 102);
+  color: white;
+}
+
+.highlight {
+  border-radius: 0.4rem;
+  color: white;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.bold {
+  padding-left: 1rem;
+  font-weight: 700;
+}
+.blue {
+  background-color: lightcoral;
+}
+.red {
+  background-color: lightblue;
+}
