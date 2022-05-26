@@ -1,0 +1,6 @@
+plotly==5.8.0
+scikit-learn==1.1.1
+sklearn==0.0
+streamlit==1.0.0
+protobuf~=3.19.0
+streamlit-option-menu==0.3.2
