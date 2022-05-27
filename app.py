@@ -9,13 +9,14 @@ from load_css import local_css
 from PIL import Image
 import pydeck as pdk
 import plotly.figure_factory as ff
+import base64
 
 local_css("style.css")
 
 def spr_sidebar():
     with st.sidebar:
         # st.image(SPR_SPOTIFY_URL, width=60)
-        st.info('**Spotify Playlist Recommender**')
+        st.info('**SONGFITT**')
         home_button = st.button("Home")
         data_button = st.button("About Dataset")
         rec_button = st.button('Recommendations')
@@ -114,70 +115,30 @@ def spr_footer():
 
 def blog_page():
     st.markdown("<br>", unsafe_allow_html=True)
+
+    # base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+    # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="400" height="1000" type="application/pdf"></iframe>'
+        
+    # st.markdown(pdf_display, unsafe_allow_html=True)
+
+    def show_pdf(file_path):
+        with open(file_path,"rb") as f:
+          base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+        pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="900" height="1000" type="application/pdf">'
+        st.markdown(pdf_display, unsafe_allow_html=True)
+    show_pdf("my_4_week_progress_report.pdf")
+
+    # def st_display_pdf(pdf_file):
+    #      with open(pdf_file,"rb") as f:
+    #          base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+    #      pdf_display = f'<embed src=”images/abc.pdf;base64,{base64_pdf}” width=”700″ height=”1000″ type=”application/pdf”>’
+    #      st.markdown(pdf_display, unsafe_allow_html = True)
+
+
+        
+   
+
     
-#     """
-#     # Creating Recommender System using Machine Learning
-#     --------
-
-#     # Part 1: Create Development Environment
-#     # Introduction:
-#     Now a days we all see many automated recommender systems everywhere, a few well known ones are Netflix, Amazon, Youtube, LinkedIn, etc.
-#     In this series, let's see how to build a recommender system using machine learning from scratch. As part of this series,
-#     I would like to show how we can create a framework for applying different machine learning algorithms on a real world music dataset to
-#     predict the playlist/songs recommendations. We will use four main approaches such as content based filtering, collaborative filtering,
-#     model based methods and deep neural networks...
-
-#     [Read more on Medium...](https://nsanka.medium.com/music-recommender-system-part-1-86936d673c31?sk=4278ddfebc850599db2fca4a5f2a2104)
-
-#     # Part 2: Get the music dataset and perform Exploratory Data Analysis
-#     # Recap:
-#     In the previous article, we created Development Environment with all the necessary Python libraries.
-#     In this article, let's get the dataset that we use which is the dataset provided as part of the Spotify Million Playlist Dataset (MPD) Challenge.
-#     In order to prepare the dataset to use in machine learning models, we need to perform some data cleaning and data manipulation tasks.
-#     We will also explore the dataset to know the features and combine with additional data fields obtained via the Spotify API...
-
-#     [Read more on Medium...](https://nsanka.medium.com/music-recommender-system-part-2-ff4c3f54cba3?sk=2ad792ce8d7cf1433a8a50cebf2915e3)
-#     # Part 3: Build and train machine learning models
-#     # The Data
-#     For this project we are using The Million Playlist Dataset (MPD) released by Spotify. As it name implies, the dataset consists of one million
-#     playlists and each playlists contains n number of songs and additional metadata is included as well such as title of the playlist, duration,
-#     number of songs, number of artists, etc...
-#     [Read more on Medium...](https://medium.com/@david.de.hernandez/modeling-data-for-a-spotify-recommender-system-3056997a0fc5?sk=7ce613a3d5cbd4a69e73804983d49f91)
-
-#     # Part 4: Evaluate the effect of dataset size on machine learning models
-#     # The Data
-#     As mentioned in my previous entry, the modeling was done with 2% of the data (20,000) samples. Which for some might or might not be large enough.
-#     Talking about big data, definitely 20k samples is not big enough. For our dataset, 1 Million playlists, 66.3 Million tracks among the playlists and
-#     2.2 Million unique tracks, we are dealing with a serious dataset....
-#     [Read more on Medium...](https://medium.com/@david.de.hernandez/scaling-data-on-an-aws-instance-for-an-spotify-recommender-system-fa71476e0d7c?sk=470e010f9d03865462400e65e07ab8ad)
-#     # PART 5: Pushing the Project to Cloud Computing (AWS Instance)
-#     After the model has been tested on the smaller set of samples (20k out of a total of 1M data!), we would have to rely on cloud computing to scale our
-#     project as our local machines have not enough power to handle the amount of 1 million rows of data.
-
-#     With zero knowledge and experience from AWS, we explored on how to set it up on the cloud system and found that it was a little tricky to choose what
-#     part of the AWS is suitable for our project as the AWS itself is a very robust platform that are rich in options.
-#     [Read more on Medium...](https://medium.com/@sheila_vp/part-4-pushing-the-project-to-cloud-computing-aws-instance-ce3b28ce8b6e)
-
-#     # Final Part: Deploy ML Based Recommender System into Production
-#     # Recap:
-#     In the previous article, we created few machine learning models to find out the best recommendations based on user Spotify favorite music or playlist.
-#     This article documents how we can put it all together for public use. We don't want our ML models to die in a Jupyter Notebook. We want our models to be
-#     integrated into a product/application and available to any user. The complete deployment process involves three major steps....
-#     [Read more on Medium...](https://medium.com/@nsanka/music-recommender-system-part-5-4278bf89411c)
-#     """
-#     st.markdown("<br>", unsafe_allow_html=True)
-
-#     # Example code to use JS
-#     # html_string = '''
-#     #              <h1>Music Recommender System — Part 1</h1>
-#     #              <script language="javascript">
-#     #               document.querySelector("h1").style.color = "red";
-#     #               console.log("Streamlit runs JavaScript");
-#     #               alert("Streamlit runs JavaScript");
-#     #              </script>
-#     #              '''
-#     # components.html(html_string)
-
 # @st.cache(suppress_st_warning=True)
 
 
@@ -574,6 +535,7 @@ def conclusions_page():
     - Unsupervised Learning -- Decided to take an different approach where I Explored different families of cluster algorithms and learning about advantages and disadvantages to make the best selection as well as deciding which measure distance makes the most sense for our purposes.
 
     '''
+    st.success("Performed the accuracy tests and these are the results received")
 
     st.header("Model Perfomance Summary")
 
@@ -581,6 +543,8 @@ def conclusions_page():
         'images/algos_accuracy.png')
     st.image(algo_accuracy, width=500)
     st.write('Using a dataset of 228, 000 Spotify Tracks, I was able to predict popularity(greater than 57 popularity) using audio-based metrics such as key, mode, and danceability without external metrics such as artist name, genre, and release date. The Random Forest Classifier was the best performing algorithm with 92.0 % accuracy and 86.4 % AUC. The Decision Tree Classifier was the second best performing algorithm with 87.5 % accuracy and 85.8 % AUC.')
+
+    st.write('Moving forward, I will use a larger Spotify database by using the Spotify API to collect my own data, and explore different algorithms to predict popularity score rather than doing binary classification.')
 
     algo_auc = Image.open(
         'images/models_auc_area_under_curve.png')
@@ -595,6 +559,18 @@ def conclusions_page():
 
 
 st.session_state.app_mode = 'recommend'
+
+# page = st.selectbox("Choose your page", ["Page 1", "Page 2", "Page 3"]) 
+
+# if page == "Page 1":
+#     # Display details of page 1
+#     st.write("hello 1")
+# elif page == "Page 2":
+#     # Display details of page 2
+#     st.write("hello 2")
+# elif page == "Page 3":
+#     st.write("hello 3")
+    # Display details of page 3
 
 # @st.cache()
 def main():
