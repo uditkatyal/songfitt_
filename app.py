@@ -8,6 +8,7 @@ import numpy as np
 from load_css import local_css
 from PIL import Image
 import pydeck as pdk
+import plotly.figure_factory as ff
 
 local_css("style.css")
 
@@ -20,7 +21,7 @@ def spr_sidebar():
         rec_button = st.button('Recommendations')
         trends_button = st.button('Trends')
         conc_button = st.button('Conclusions')
-        blog_button = st.button('Blog Posts')
+        blog_button = st.button('My 4 weeks Progress Report')
         st.checkbox('Display Output', True, key='display_output')
         st.session_state.log_holder = st.empty()
         # log_output('None')
@@ -41,38 +42,27 @@ def spr_sidebar():
 def dataset_page():
     st.markdown("<br>", unsafe_allow_html=True)
     """
-    # Spotify Million Playlist Dataset
+    # Spotify Gen Track Dataset
     -----------------------------------
-    For this project we are using The Million Playist Dataset, as it name implies, the dataset consists of one million playlists and each playlists
-    contains n number of songs and some metadata is included as well such as name of the playlist, duration, number of songs, number of artists, etc.
+    Here I am using Spotity Gen Track Dataset, this dataset contains n number of songs and some metadata is included as well such as name of the playlist, duration, number of songs, number of artists, etc.
     """
 
+    dataset_contains = Image.open('images/dataset_contains.png')
+    st.image(dataset_contains, width =900)
+
     """
-    It is created by sampling playlists from the billions of playlists that Spotify users have created over the years.
-    Playlists that meet the following criteria were selected at random:
-    - Created by a user that resides in the United States and is at least 13 years old
-    - Was a public playlist at the time the MPD was generated
-    - Contains at least 5 tracks
-    - Contains no more than 250 tracks
-    - Contains at least 3 unique artists
-    - Contains at least 2 unique albums
-    - Has no local tracks (local tracks are non-Spotify tracks that a user has on their local device
-    - Has at least one follower (not including the creator
-    - Was created after January 1, 2010 and before December 1, 2017
+   
+    - The data has three files namely spotify_albums, spotify_artists and spotify_tracks from which I am extracting songs information.
+    - There is spotify features.csv files which contains all required features of the songs that I am using. 
     - Does not have an offensive title
-    - Does not have an adult-oriented title if the playlist was created by a user under 18 years of age
 
-    As you can imagine a million anything is too large to handle and we are going to be using 2% of the data (20,000 playlists) to create the models
-    and the scaling to an AWS instance.
     """
     """
     # Enhancing the data:
-    Since this dataset is released by Spotify, it already includes a track id that can be used to generate API calls and
-    access the multiple information that is provided from Spotify for a given song, artist or user.
-    These are some of the features that are available to us for each song and we are going to use them to enhance our dataset and to help matching
-    the user's favorite playlist.
+    These are some of the features that are available to us for each song and I am going to use them to enhance our dataset and to help matching
+    the user's favorite song as per his/her input.
 
-    # Some of the available features are the following, they are measured mostly in a scale of 0-1:
+    ### These features value is measured mostly in a scale of 0-1:
     - **acousticness:** Confidence measure from 0.0 to 1.0 on if a track is acoustic.
     - **danceability:** Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo,
     rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
@@ -96,20 +86,30 @@ def dataset_page():
     - **valence:** A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound
     more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
 
-    Information about features: [link](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features)
+    Refered docs: [link](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features)
     """
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    '''
+    # Final Dataset 
+    '''
+    '''
+    - Enhancing data
+    '''
+    dataframe1 = pd.read_csv('filtered_track_df.csv')
+    st.dataframe(dataframe1)
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.subheader('Total VS New Tracks in each json file')
+    # st.subheader('Total VS New Tracks in each json file')
     # st.plotly_chart(get_num_tracks_fig('total'), use_container_width=True)
-    st.subheader('Existing VS New Tracks in each json file')
+    # st.subheader('Existing VS New Tracks in each json file')
     # st.plotly_chart(get_num_tracks_fig('existing'), use_container_width=True)
 
 
 def spr_footer():
     st.markdown('---')
     st.markdown(
-        '© Copyright 2021 - Song Recommender By Udit Katyal')
+        '© Copyright 2021 - SongFitt By Udit Katyal')
 
 
 def blog_page():
@@ -186,47 +186,73 @@ def trends_page():
     st.subheader("Song Popularity Prediction")
     st.markdown(
         'On the basis of the features that we have in our dataframe, I will try to predict the Popularity of Songs.')
-    st.write(" ➣  Accousticness: How acoustic, quiet or loud the track is.")
-    st.write(" ➣  Danceability: How danceable the track is.")
-    st.write(" ➣ Energy ")
-    st.write(" ➣  Instrumentalness: How instrumental the track is.")
-    st.write(" ➣ Tempo ")
-    st.write("➣  Valence: How positive or negative the track is.")
-    # t = "<div>Hello there my <span class='highlight blue'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
-    # st.markdown(t, unsafe_allow_html=True)
 
     popularity_distrubution = Image.open(
-        'images/popularity_distribution.png')
+        'images/popularity_distribution.png') 
+
+    st.image(popularity_distrubution,
+             caption='Popularity Distribution', width=500)       
+
+    
+    st.write("Popularity based on Time Signature")
+    st.code("Indicates how many beats are in each measure of a piece of music")   
+    st.code("4/4 has four quarter note beats and 3/4 has three quarter note beats likewise")  
+
+    st.write("#")
+
+    st.write("Popularity based on key")
+    st.code("Key is the major or minor scale around which a piece of music revolves")   
+    st.code("12 keys C#, C, D#, D, E, F#, F, G#, G, A#, A, B.")  
+
+    st.write("#")
+
+    st.write("Popularity based on Mode")
+    st.code("Corresponds to melodic and harmonic behaviors of music")   
+    st.code("Major and Minor Modes") 
+
+    st.write("#")
+
+    st.write("Popularity based on Mode and Key")
+    st.code("Popularity of songs collectively")   
+     
+        #  Popularity based on Key and Mode
+
+    # t = "<div>Hello there my <span class='highlight blue'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+    # st.markdown(t, unsafe_allow_html=True)
+    
+    # genre = st.radio(
+    #  "What's your favorite movie genre",
+    #  ('Comedy', 'Drama', 'Documentary'))  
+    
 
     popularity_timesignature = Image.open(
         'images/popularity_timesignature.png')
 
     popularity_key = Image.open(
-        'images/popularity_key_mode.png')
+        'images/popularity_key.png')
 
     popularity_mode = Image.open(
-        'images/popularity_key.png')
+        'images/popularity_mode.png')
 
     popularity_key_mode = Image.open(
         'images/popularity_key_mode.png')
 
-    st.image(popularity_distrubution,
-             caption='Popularity Distribution', width=250)
+   
     col1, col2 = st.columns(2)
     with col1:
         st.image(popularity_timesignature,
-                 caption='Popularity Based on Time Signatures', width=300)
+                 caption='Popularity Based on Time Signatures', width=400)
     with col2:
         st.image(popularity_key,
-                 caption='Popularity Based on Key', width=300)
+                 caption='Popularity Based on Key', width=400)
 
     col1, col2 = st.columns(2)
     with col1:
         st.image(popularity_mode,
-                 caption='Popularity Based on Mode', width=300)
+                 caption='Popularity Based on Mode', width=400)
     with col2:
         st.image(popularity_key_mode,
-                 caption='Popularity Based on Key and Mode', width=300)
+                 caption='Popularity Based on Key and Mode', width=400)
 
     st.subheader('Feature Correlation')
     st.markdown('**Feature Correlation** talks about dependencies between features. It is a way to understand how features are correlated with each other.')
@@ -252,19 +278,7 @@ print("AUC: " + str(LR_AUC))
 Accuracy: 0.7497945543198379
 AUC: 0.5'''
     st.code(code, language='python')
-    st.subheader("Random Forest")
-    code = '''RFC_Model = RandomForestClassifier()
-RFC_Model.fit(X_train, y_train)
-RFC_Predict = RFC_Model.predict(X_valid)
-RFC_Accuracy = accuracy_score(y_valid, RFC_Predict)
-print("Accuracy: " + str(RFC_Accuracy))
-
-RFC_AUC = roc_auc_score(y_valid, RFC_Predict)
-print("AUC: " + str(RFC_AUC))
-
-Accuracy: 0.9357365912452748
-AUC: 0.879274665020435'''
-    st.code(code, language='python')
+   
     st.subheader("K-Nearest Neighbors Classifier")
     code = '''KNN_Model = KNeighborsClassifier()
 KNN_Model.fit(X_train, y_train)
@@ -292,6 +306,7 @@ print("AUC: " + str(DT_AUC))
 Accuracy: 0.8742672437407549
 AUC: 0.8573960839474465
 '''
+
     st.code(code, language='python')
     st.subheader("Linear Support Vector Classification")
     code = '''
@@ -302,7 +317,7 @@ X_test_LSVC = dataframe.drop(training_LSVC.index)[features]
 X_train_LSVC, X_valid_LSVC, y_train_LSVC, y_valid_LSVC = train_test_split(
     X_train_LSVC, y_train_LSVC, test_size = 0.2, random_state = 420)
 
-    LSVC_Model = DecisionTreeClassifier()
+LSVC_Model = DecisionTreeClassifier()
 LSVC_Model.fit(X_train_LSVC, y_train_LSVC)
 LSVC_Predict = LSVC_Model.predict(X_valid_LSVC)
 LSVC_Accuracy = accuracy_score(y_valid_LSVC, LSVC_Predict)
@@ -316,9 +331,25 @@ AUC: 0.5881201752103391
 '''
 
     st.code(code, language='python')
+    st.subheader("Random Forest")
+    code = '''RFC_Model = RandomForestClassifier()
+RFC_Model.fit(X_train, y_train)
+RFC_Predict = RFC_Model.predict(X_valid)
+RFC_Accuracy = accuracy_score(y_valid, RFC_Predict)
+print("Accuracy: " + str(RFC_Accuracy))
+
+RFC_AUC = roc_auc_score(y_valid, RFC_Predict)
+print("AUC: " + str(RFC_AUC))
+
+Accuracy: 0.9357365912452748
+AUC: 0.879274665020435'''
+    st.code(code, language='python')
+
+
+  
 
     df = pd.DataFrame(
-        np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+        np.random.randn(2000, 2) / [50, 50] + [37.76, -122.4],
         columns=['lat', 'lon'])
     st.pydeck_chart(pdk.Deck(
         map_style='mapbox://styles/mapbox/light-v9',
@@ -335,7 +366,7 @@ AUC: 0.5881201752103391
                 get_position='[lon, lat]',
                 radius=200,
                 elevation_scale=4,
-                elevation_range=[0, 1000],
+                elevation_range=[0, 3000],
                 pickable=True,
                 extruded=True,
             ),
@@ -393,7 +424,24 @@ def n_neighbors_uri_audio(genre, start_year, end_year, test_feat):
 def rec_page():
     
     st.header("RECOMMENDATION ENGINE")
+    x1 = np.random.randn(200) - 2
+    x2 = np.random.randn(200)
+    x3 = np.random.randn(200) + 2
+
+    # Group data together
+    hist_data = [x1, x2, x3]
+
+    group_labels = ['Group 1', 'Group 2', 'Group 3']
+
+    # Create distplot with custom bin_size
+    fig = ff.create_distplot(
+         hist_data, group_labels, bin_size=[.1, .25, .5])
+
+    # Plot!
+    st.plotly_chart(fig, use_container_width=True)
+
     
+
     with st.container():
         col1, col2, col3, col4 = st.columns((2, 0.5, 0.5, 0.5))
     with col3:
@@ -514,19 +562,31 @@ def home_page():
 
 def conclusions_page():
     st.header('Conclusions')
-    st.subheader("Model Perfomance Summary")
+    
+    '''
+    #### Problems I ran through
+    '''
+    '''
+    - Data Collection -- Even though the core dataset I used was provided by Spotify, it was needed to go and look for other data sources to enhance the data and combine it with the core data set. 
+
+    - Efficient Data Processing -- Initially I decided to take complete SpotifyGenTrack dataset (approximately 773.84 MB of data). But it became very important to enhance the data quality unless the recommendation might run to unnecessary bugs and outcomes. Therefore after many attempts, generated a filteredTrack csv which had the exact and refined dataset that was required for recommendation and predicting popularity of songs.
+
+    - Unsupervised Learning -- Decided to take an different approach where I Explored different families of cluster algorithms and learning about advantages and disadvantages to make the best selection as well as deciding which measure distance makes the most sense for our purposes.
+
+    '''
+
+    st.header("Model Perfomance Summary")
 
     algo_accuracy = Image.open(
         'images/algos_accuracy.png')
-    st.image(algo_accuracy, width=300)
+    st.image(algo_accuracy, width=500)
     st.write('Using a dataset of 228, 000 Spotify Tracks, I was able to predict popularity(greater than 57 popularity) using audio-based metrics such as key, mode, and danceability without external metrics such as artist name, genre, and release date. The Random Forest Classifier was the best performing algorithm with 92.0 % accuracy and 86.4 % AUC. The Decision Tree Classifier was the second best performing algorithm with 87.5 % accuracy and 85.8 % AUC.')
 
     algo_auc = Image.open(
         'images/models_auc_area_under_curve.png')
-    st.image(algo_auc, width=300)
+    st.image(algo_auc, width=500)
     st.write("The Area Under the Curve (AUC) is the measure of the ability of a classifier to distinguish between classess. The higher the AUC, the better the performance of the model at distinguishing between the positive and negative classes.")
 
-    st.write(' Moving forward, I will use a larger Spotify database by using the Spotify API to collect my own data, and explore different algorithms to predict popularity score rather than doing binary classification.')
 
     df = pd.DataFrame(
         np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
@@ -535,6 +595,7 @@ def conclusions_page():
 
 
 st.session_state.app_mode = 'recommend'
+
 # @st.cache()
 def main():
     spr_sidebar()
