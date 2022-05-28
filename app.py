@@ -548,7 +548,11 @@ def main():
     spr_sidebar()
     st.header("SONGFITT (SS)")
     st.markdown(
-        '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.')  
+        '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.') 
+
+    cover_image = Image.open("images/cover.jpg")
+    st.image(cover_image , width = 600)     
+    # st.code("<- Go to the Home Button ")
     if st.session_state.app_mode == 'dataset':
         dataset_page()
 
