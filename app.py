@@ -24,7 +24,7 @@ def spr_sidebar():
         home_button = st.button("Home")
         data_button = st.button("About Dataset")
         rec_button = st.button('Recommendations')
-        trends_button = st.button('Trends')
+        trends_button = st.button('Features')
         conc_button = st.button('Conclusions')
         blog_button = st.button('My 4 weeks Progress Report')
         st.success('By Udit Katyal')
@@ -130,7 +130,7 @@ def blog_page():
           base64_pdf = base64.b64encode(f.read()).decode('utf-8')
         pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="900" height="1000" type="application/pdf">'
         st.markdown(pdf_display, unsafe_allow_html=True)
-    show_pdf("my_4_week_progress_report.pdf")
+    show_pdf("4_weeks_progress_report.pdf")
 
     # def st_display_pdf(pdf_file):
     #      with open(pdf_file,"rb") as f:
@@ -147,7 +147,7 @@ def blog_page():
 
 
 def trends_page():
-    st.header("Trends")
+    st.header("Features")
     st.subheader("Song Popularity Prediction")
     st.markdown(
         'On the basis of the features that we have in our dataframe, I will try to predict the Popularity of Songs.')
@@ -529,20 +529,26 @@ def conclusions_page():
 
     algo_accuracy = Image.open(
         'images/algos_accuracy.png')
-    st.image(algo_accuracy, width=500)
+    st.image(algo_accuracy, width=400)
     st.write('Using a dataset of 228, 000 Spotify Tracks, I was able to predict popularity(greater than 57 popularity) using audio-based metrics such as key, mode, and danceability without external metrics such as artist name, genre, and release date. The Random Forest Classifier was the best performing algorithm with 92.0 % accuracy and 86.4 % AUC. The Decision Tree Classifier was the second best performing algorithm with 87.5 % accuracy and 85.8 % AUC.')
 
     st.write('Moving forward, I will use a larger Spotify database by using the Spotify API to collect my own data, and explore different algorithms to predict popularity score rather than doing binary classification.')
 
     algo_auc = Image.open(
         'images/models_auc_area_under_curve.png')
-    st.image(algo_auc, width=500)
+    st.image(algo_auc, width=400)
     st.write("The Area Under the Curve (AUC) is the measure of the ability of a classifier to distinguish between classess. The higher the AUC, the better the performance of the model at distinguishing between the positive and negative classes.")
-
-
-    df = pd.DataFrame(
-        np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-        columns=['lat', 'lon'])
+     
+    st.subheader("Music Trend Analysis Conclusion")
+    '''
+    - Dataset is imbalanced with more Europian countries.
+    - Few songs have managed to make in 96% of Top Charts of all countries.
+    - Even though few artists have many occurances in the Top charts, they don't have any song in Top 10 tracks occurances.
+    - Average song duration preferred by most is around 3:00 minutes to 3:20 minutes
+    - People in Asian countries prefer longer song duration. Europian countries mostly listen to songs close to or less than 3 minutes.
+    - Asian countries prefer less of explicit songs, only 18%, compared to world average of 35%. "Global Top 50 Chart" has 23 explicit songs.
+    '''
+    
 
 
 
