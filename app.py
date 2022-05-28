@@ -10,8 +10,12 @@ from PIL import Image
 import pydeck as pdk
 import plotly.figure_factory as ff
 import base64
+import streamlit.components.v1 as components
+
 
 local_css("style.css")
+
+
 
 def spr_sidebar():
     with st.sidebar:
@@ -23,7 +27,7 @@ def spr_sidebar():
         trends_button = st.button('Trends')
         conc_button = st.button('Conclusions')
         blog_button = st.button('My 4 weeks Progress Report')
-        st.checkbox('Display Output', True, key='display_output')
+        st.success('By Udit Katyal')
         st.session_state.log_holder = st.empty()
         # log_output('None')
         if home_button:
@@ -306,41 +310,12 @@ Accuracy: 0.9357365912452748
 AUC: 0.879274665020435'''
     st.code(code, language='python')
 
+    st.header("Song Popularity By Location")
+    st.code("For Input purpose I have taken very famous Song :Despacito: by Louis Fonsi")
+    components.iframe("http://threegraphs.com/charts/preview/9034/embed/", width = 1000, height = 700)
 
-  
-
-    df = pd.DataFrame(
-        np.random.randn(2000, 2) / [50, 50] + [37.76, -122.4],
-        columns=['lat', 'lon'])
-    st.pydeck_chart(pdk.Deck(
-        map_style='mapbox://styles/mapbox/light-v9',
-        initial_view_state=pdk.ViewState(
-            latitude=37.76,
-            longitude=-122.4,
-            zoom=11,
-            pitch=50,
-        ),
-        layers=[
-            pdk.Layer(
-                'HexagonLayer',
-                data=df,
-                get_position='[lon, lat]',
-                radius=200,
-                elevation_scale=4,
-                elevation_range=[0, 3000],
-                pickable=True,
-                extruded=True,
-            ),
-            pdk.Layer(
-                'ScatterplotLayer',
-                data=df,
-                get_position='[lon, lat]',
-                get_color='[200, 30, 0, 160]',
-                get_radius=200,
-            ),
-        ],
-    ))
-
+    # <iframe src="http://threegraphs.com/charts/preview/9032/embed/" width="500" height="500" scrolling="no" frameborder="0" style="border:none;"></iframe>
+ 
 
 # @st.cache(allow_output_mutation=True)
 def load_data():
@@ -385,24 +360,7 @@ def n_neighbors_uri_audio(genre, start_year, end_year, test_feat):
 def rec_page():
     
     st.header("RECOMMENDATION ENGINE")
-    x1 = np.random.randn(200) - 2
-    x2 = np.random.randn(200)
-    x3 = np.random.randn(200) + 2
-
-    # Group data together
-    hist_data = [x1, x2, x3]
-
-    group_labels = ['Group 1', 'Group 2', 'Group 3']
-
-    # Create distplot with custom bin_size
-    fig = ff.create_distplot(
-         hist_data, group_labels, bin_size=[.1, .25, .5])
-
-    # Plot!
-    st.plotly_chart(fig, use_container_width=True)
-
-    
-
+   
     with st.container():
         col1, col2, col3, col4 = st.columns((2, 0.5, 0.5, 0.5))
     with col3:
@@ -503,6 +461,28 @@ def rec_page():
     else:
         st.write("No songs left to recommend")
 
+    st.code("Algorithms that I have used in CF filtering are the k-nearest neighbours and Random Forest")
+
+    x1 = np.random.randn(2000) - 2
+    x2 = np.random.randn(2)
+    x3 = np.random.randn(2000) + 2
+
+    # Group data together
+    hist_data = [x1, x2, x3]
+
+    group_labels = ['Energy', 'Acousticness', 'Loudness']
+
+    # Create distplot with custom bin_size
+    fig = ff.create_distplot(
+         hist_data, group_labels, bin_size=[.1, .25, .5])
+
+    # Plot!
+    st.plotly_chart(fig, use_container_width=True)    
+    random_forest_audio_importance = Image.open('images/random_forest_audio_importance_feature.jpg')
+    st.image(random_forest_audio_importance, caption ="random_forest_audio_feature_importance", width = 900)
+
+   
+
 
 def home_page():
     st.header('Welcome to SONGFITT (SS)')
@@ -560,32 +540,14 @@ def conclusions_page():
 
 st.session_state.app_mode = 'recommend'
 
-# page = st.selectbox("Choose your page", ["Page 1", "Page 2", "Page 3"]) 
-
-# if page == "Page 1":
-#     # Display details of page 1
-#     st.write("hello 1")
-# elif page == "Page 2":
-#     # Display details of page 2
-#     st.write("hello 2")
-# elif page == "Page 3":
-#     st.write("hello 3")
-    # Display details of page 3
-
 # @st.cache()
 def main():
+    
     spr_sidebar()
     st.header("SONGFITT (SS)")
     st.markdown(
-        '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.')
-    # genre = st.radio(
-    #  "What's your favorite movie genre",
-    #  ('Comedy', 'Drama', 'Drama'))    
-
+        '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.')  
     if st.session_state.app_mode == 'dataset':
-    #     genre = st.radio(
-    #  "What's your favorite movie genre",
-    #  ('Comedy', 'Drama', 'Documentary'))
         dataset_page()
 
     if st.session_state.app_mode == 'trends':
