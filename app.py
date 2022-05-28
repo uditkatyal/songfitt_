@@ -469,23 +469,10 @@ def rec_page():
     else:
         st.write("No songs left to recommend")
 
-    st.code("Algorithms that I have used in CF filtering are the k-nearest neighbours and Random Forest")
+    st.subheader("Algorithms that I have used in this filtering are the k-nearest neighbours and Random Forest")
 
-    x1 = np.random.randn(2000) - 2
-    x2 = np.random.randn(2)
-    x3 = np.random.randn(2000) + 2
-
-    # Group data together
-    hist_data = [x1, x2, x3]
-
-    group_labels = ['Energy', 'Acousticness', 'Loudness']
-
-    # Create distplot with custom bin_size
-    fig = ff.create_distplot(
-         hist_data, group_labels, bin_size=[.1, .25, .5])
-
+   
     # Plot!
-    st.plotly_chart(fig, use_container_width=True)    
     random_forest_audio_importance = Image.open('images/random_forest_audio_importance_feature.jpg')
     st.image(random_forest_audio_importance, caption ="random_forest_audio_feature_importance", width = 900)
 
@@ -505,7 +492,8 @@ def home_page():
     image = Image.open(
         'images/img1.jpg')
     st.image(image, caption='Udit Katyal', width=200)
-    st.markdown('Github Repo Link and socials')
+
+    st.write("Check out my [Github Repository](https://github.com/uditkatyal/songfitt_)")
     st.write('Hi I am Udit Katyal, a sophomore pursuing Btech IT from Akhilesh Das Gupta Institute of Technology and Management, New Delhi India. ')
 
 
