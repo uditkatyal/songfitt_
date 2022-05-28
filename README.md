@@ -38,6 +38,9 @@ streamlit run app.py
 - Music Trend Analysis (by location) - https://www.kaggle.com/code/hkapoor/music-trends-analysis-by-location/data
 
 ## Data cleaning and pre-processing:
+- read playlists/track info from json files
+- extract audio features for each track
+- optimise the features 
 
 ## Research Papers 
 - https://www.researchgate.net/publication/277714802_A_Survey_of_Music_Recommendation_Systems_and_Future_Perspectives
