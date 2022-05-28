@@ -310,11 +310,19 @@ Accuracy: 0.9357365912452748
 AUC: 0.879274665020435'''
     st.code(code, language='python')
 
-    st.header("Song Popularity By Location")
-    st.code("For Input purpose I have taken very famous Song :Despacito: by Louis Fonsi")
-    components.iframe("http://threegraphs.com/charts/preview/9034/embed/", width = 1000, height = 700)
+    st.header("Music Trends Analysis By Location")
+    '''
+    For Input purpose I took the most listened song from my dataset **Blinding Lights**  and predicted it's popularity score
+    
+    '''
 
-    # <iframe src="http://threegraphs.com/charts/preview/9032/embed/" width="500" height="500" scrolling="no" frameborder="0" style="border:none;"></iframe>
+    top_10_tracks = Image.open("images/top_tracks.png")
+    st.image(top_10_tracks , caption ="Top 1o Tracks", width = 800)
+    
+    st.code("Popularity ranges from 0 - 100 but to make visible on map 1 Unit = 1000 Unit, so 32200 score = 32.2 popularity")
+    components.iframe("http://threegraphs.com/charts/preview/9036/embed/", width = 1000, height = 700)
+
+   
  
 
 # @st.cache(allow_output_mutation=True)
