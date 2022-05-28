@@ -1,4 +1,5 @@
 import streamlit as st
+st.set_page_config(layout="wide")
 from streamlit_option_menu import option_menu
 import streamlit.components.v1 as components
 import plotly.express as px
@@ -124,13 +125,26 @@ def blog_page():
     # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="400" height="1000" type="application/pdf"></iframe>'
         
     # st.markdown(pdf_display, unsafe_allow_html=True)
+    
+    st.text('If you are viewing on Public Url PDF wont be visible' )
+    st.text('You can download it from here or from the github repo')
 
+    with open("4_weeks_progress_report.pdf", "rb") as pdf_file:
+        PDFbyte = pdf_file.read()
+    
+
+    st.download_button(label="Progress Report", 
+        data=PDFbyte,
+        file_name="ProgressReport.pdf",
+        mime='application/octet-stream')
     def show_pdf(file_path):
         with open(file_path,"rb") as f:
           base64_pdf = base64.b64encode(f.read()).decode('utf-8')
         pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="900" height="1000" type="application/pdf">'
         st.markdown(pdf_display, unsafe_allow_html=True)
     show_pdf("4_weeks_progress_report.pdf")
+
+    
 
     # def st_display_pdf(pdf_file):
     #      with open(pdf_file,"rb") as f:
@@ -564,17 +578,17 @@ def main():
         #  st.error('Please select an option in User Input page')
         rec_page()
 
-        with st.form(key="form"):
-            files = st.file_uploader("Files", accept_multiple_files=True)
-            submit_button = st.form_submit_button(label="Submit choice")
+        # with st.form(key="form"):
+        #     files = st.file_uploader("Files", accept_multiple_files=True)
+        #     submit_button = st.form_submit_button(label="Submit choice")
 
-        if submit_button:
-            if files:
-             st.markdown("You chose the files {}".format(", ".join([f.name for f in files])))
-            else:
-             st.markdown("You did not choose any file but clicked on 'Submit choice' anyway")
-        else:
-          st.markdown("You did not click on submit button.")
+        # if submit_button:
+        #     if files:
+        #      st.markdown("You chose the files {}".format(", ".join([f.name for f in files])))
+        #     else:
+        #      st.markdown("You did not choose any file but clicked on 'Submit choice' anyway")
+        # else:
+        #   st.markdown("You did not click on submit button.")
         
 
     if st.session_state.app_mode == 'blog':
