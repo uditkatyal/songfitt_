@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config(layout="wide")
+st.set_page_config(page_title='SongFitt', layout = 'wide', initial_sidebar_state = 'auto')
 from streamlit_option_menu import option_menu
 import streamlit.components.v1 as components
 import plotly.express as px
