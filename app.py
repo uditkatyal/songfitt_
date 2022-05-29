@@ -100,7 +100,7 @@ def dataset_page():
     # Final Dataset 
     '''
     '''
-    - Enhancing data
+    - Enhanced data
     '''
     dataframe1 = pd.read_csv('filtered_track_df.csv')
     st.dataframe(dataframe1)
@@ -161,7 +161,6 @@ def blog_page():
 
 
 def trends_page():
-    st.header("Features")
     st.subheader("Song Popularity Prediction")
     st.markdown(
         'On the basis of the features that we have in our dataframe, I will try to predict the Popularity of Songs.')
@@ -544,11 +543,11 @@ def conclusions_page():
     - Unsupervised Learning -- Decided to take an different approach where I Explored different families of cluster algorithms and learning about advantages and disadvantages to make the best selection as well as deciding which measure distance makes the most sense for our purposes.
 
     '''
-    st.success("Performed the accuracy tests and these are the results received")
     
-    st.header('Conclusion')
+    
+    st.header('Conclusion ')
     st.subheader("Model Perfomance Summary")
-
+    st.success("Accuracy Test Results")
     algo_accuracy = Image.open(
         'images/algos_accuracy.png')
     st.image(algo_accuracy, width=400)
