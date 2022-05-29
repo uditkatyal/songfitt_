@@ -19,6 +19,17 @@ To run the web server, simply execute streamlit with the app.py file:
 streamlit run app.py
 ```
 
+If You want to run the ML Models
+- Do add the SpotGenTrack file in the main folder 
+- Zip file of SpotGenTrack is Attached in the folder 
+- This is how file structure should be 
+- C:\Users\UditKatyal\Desktop\songfitt_\SpotGenTrack
+
+
+
+
+
+
 ##  Proposed methodology 
   In this Project I have used K Nearest Neighbours and Random Forest Machine Learning Algorithms.
   The model is initially trained with dataset provided and then recommends the songs as per user input.
