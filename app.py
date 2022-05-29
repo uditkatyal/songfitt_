@@ -582,7 +582,7 @@ def main():
     st.header("SONGFITT (SF)")
     st.markdown(
         '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.  ') 
-    st.markdown('Along with the rapid expansion of digital music formats, managing and searching for songs has become signiﬁcant. The purpose of this project was to build a recommendation system to allow users to discover music based on their listening preferences. Therefore in this model I focused on the public opinion to discover and recommend music.')    
+    st.markdown('Along with the rapid expansion of digital music formats, managing and searching for songs has become signiﬁcant. The purpose of this project is to build a recommendation system to allow users to discover music based on their listening preferences. Therefore in this model I focused on the public opinion to discover and recommend music.')    
 
     # cover_image = Image.open("images/cover.jpg")
     # st.image(cover_image , width = 400)     
