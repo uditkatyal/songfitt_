@@ -47,7 +47,7 @@ Along with the rapid expansion of digital music formats, managing and searching 
    ```
   
 4. Run the project.
-* While you are still inside the cloned folder, write the following command in terminal to run the website locally. 
+* Write the following command in terminal to run the website locally. 
    ```
    streamlit run app.py
    ```
