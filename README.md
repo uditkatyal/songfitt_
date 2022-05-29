@@ -1,7 +1,10 @@
-# songfitt_
+# SONGFITT_
 SONGFITT is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.
 
 Along with the rapid expansion of digital music formats, managing and searching for songs has become signiﬁcant. The purpose of this project is to build a recommendation system to allow users to discover music based on their listening preferences. Therefore in this model I focused on the public opinion to discover and recommend music.
+
+# Introduction
+Recommendation systems are now central to music streaming platforms, which are rapidly increasing in listenership and becoming the top source of revenue for the music industry.The goal of a this system is to help consumers and the music industry with the discovery and delivery of music.
 
 ## Installation
 Prefer creating a virtual environment to avoid any issues
@@ -19,11 +22,14 @@ To run the web server, simply execute streamlit with the app.py file:
 streamlit run app.py
 ```
 
-If You want to run the ML Models
+## If You want to run the ML Models
 - Do add the SpotGenTrack file in the main folder 
 - Zip file of SpotGenTrack is Attached in the folder 
-- This is how file structure should be 
+- This is how file structure should look like-
 - C:\Users\UditKatyal\Desktop\songfitt_\SpotGenTrack
+
+![Screenshot (105)](https://github.com/uditkatyal/songfitt_/blob/main/images/file_structure.png)
+![Screenshot (105)](https://github.com/uditkatyal/songfitt_/blob/main/images/sub_files_1.png)
 
 
 
@@ -59,9 +65,11 @@ If You want to run the ML Models
 
 
 ## Built With
-  Frontend Technology
+
+### Frontend Technology
 - [streamlit]() - Streamlit is an open-source app framework for Machine Learning and Data Science teams. Create beautiful data apps in hours, not weeks.
-   Backend Technology
+
+### Backend Technologies
 - [pandas]() - pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
 - [Pillow]() - PIL is the Python Imaging Library by Fredrik Lundh and Contributors.
 - [scikit-learn]() - Scikit-learn is a free software machine learning library for the Python programming language.
@@ -69,7 +77,8 @@ If You want to run the ML Models
 - [Numpy]() - NumPy is the fundamental package for array computing with Python.
 - [Three Graphs]() - 3-D Charts for the web.
 
-## Conclusion
+## Conclusion and Future Scope
 
-In this project, I have presented a novel framework for Music recommendation that is driven by data
+- In this project, I have presented a novel framework for Music recommendation that is driven by data
 and simple effective recommendation system for generating songs as per users choice.
+- Moving forward, I will use a larger Spotify database by using the Spotify API to collect my own data, and explore different algorithms to predict popularity score rather than doing binary classification.
