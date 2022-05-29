@@ -5,7 +5,7 @@ Along with the rapid expansion of digital music formats, managing and searching 
 
 ## Installation
 Prefer creating a virtual environment to avoid any issues
-Use pip to install the requirements.
+- Use pip to install the requirements.
 
 ~~~bash
 pip install -r requirements.txt
