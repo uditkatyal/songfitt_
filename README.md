@@ -4,7 +4,7 @@ SONGFITT is a online Robust Music Recommendation Engine where in you can finds t
 Along with the rapid expansion of digital music formats, managing and searching for songs has become signiﬁcant. The purpose of this project is to build a recommendation system to allow users to discover music based on their listening preferences. Therefore in this model I focused on the public opinion to discover and recommend music.
 
 ## Installation
-
+Prefer creating a virtual environment to avoid any issues
 Use pip to install the requirements.
 
 ~~~bash
