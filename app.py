@@ -141,7 +141,7 @@ def blog_page():
         PDFbyte = pdf_file.read()
     
 
-    st.download_button(label="Progress Report", 
+    st.download_button(label="Download Progress Report", 
         data=PDFbyte,
         file_name="ProgressReport.pdf",
         mime='application/octet-stream')
