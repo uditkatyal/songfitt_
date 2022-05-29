@@ -39,6 +39,10 @@ Along with the rapid expansion of digital music formats, managing and searching 
 
 ![Screenshot (107)](https://github.com/uditkatyal/songfitt_/blob/main/images/screenshot2.png)
 
+### Enable dark theme for better User Experience
+
+![Screenshot (107)](https://github.com/uditkatyal/songfitt_/blob/main/images/dark_theme.png)
+
 ## Installation/Environment Setup
 1. Clone this repository in your local system.
 * Open terminal in a new folder and enter the command given below.
