@@ -125,8 +125,16 @@ def blog_page():
     # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="400" height="1000" type="application/pdf"></iframe>'
         
     # st.markdown(pdf_display, unsafe_allow_html=True)
-    
-    st.text('If you are viewing on Public Url PDF wont be visible' )
+    st.header("Problems I ran through")
+    '''
+    - Data Collection -- Even though the core dataset I used was provided by Spotify, it was needed to go and look for other data sources to enhance the data and combine it with the core data set. 
+
+    - Efficient Data Processing -- Initially I decided to take complete SpotifyGenTrack dataset (approximately 773.84 MB of data). But it became very important to enhance the data quality unless the recommendation might run to unnecessary bugs and outcomes. Therefore after many attempts, generated a filteredTrack csv which had the exact and refined dataset that was required for recommendation and predicting popularity of songs.
+
+    - Unsupervised Learning -- Decided to take an different approach where I Explored different families of cluster algorithms and learning about advantages and disadvantages to make the best selection.
+
+    '''
+    st.text('If you are viewing on Hosted Url PDF wont be visible' )
     st.text('You can download it from here or from the github repo')
 
     with open("4_weeks_progress_report.pdf", "rb") as pdf_file:
@@ -333,7 +341,7 @@ AUC: 0.879274665020435'''
     st.image(top_10_tracks , caption ="Top 1o Tracks", width = 800)
 
     st.header("3-D Earth Model")
-    st.text("Popularity by Location")
+    
 
   
     '''
@@ -341,7 +349,7 @@ AUC: 0.879274665020435'''
     '''
     st.text("To view the model on WebApp run the application on Local Host")
     
-    
+    st.text("Popularity by Location")
     st.code("Popularity ranges from 0 - 100 but to make visible on map 1 Unit = 1000 Unit, so 32200 score = 32.2 popularity")
     components.iframe("http://threegraphs.com/charts/preview/9036/embed/", width = 1000, height = 700)
 
@@ -513,7 +521,6 @@ def home_page():
         st.write(
         'Hi Microsoft, I am Udit Katyal and this is my WebApp for Microsoft engage 2022 Program. I am in 2nd Year and pursuing BTech IT from Akhilesh Das Gupta Institute of Technology and Management, New Delhi India.')
         st.write('  Knowledgeable in the Web Application, services and product management. Motivated to gain more industrial experience with a growth oriented and technically advanced organizations.')
-        st.write('Check this demo video to see how to use this Web App:')
         st.write("Check out my [Github Repository](https://github.com/uditkatyal/songfitt_)")
         
 
@@ -532,21 +539,9 @@ def home_page():
 
 
 def conclusions_page():
-    
-    
-    st.header("Problems I ran through")
-    '''
-    - Data Collection -- Even though the core dataset I used was provided by Spotify, it was needed to go and look for other data sources to enhance the data and combine it with the core data set. 
 
-    - Efficient Data Processing -- Initially I decided to take complete SpotifyGenTrack dataset (approximately 773.84 MB of data). But it became very important to enhance the data quality unless the recommendation might run to unnecessary bugs and outcomes. Therefore after many attempts, generated a filteredTrack csv which had the exact and refined dataset that was required for recommendation and predicting popularity of songs.
-
-    - Unsupervised Learning -- Decided to take an different approach where I Explored different families of cluster algorithms and learning about advantages and disadvantages to make the best selection.
-
-    '''
-    
-    
     st.header('Conclusion ')
-    st.subheader("Model Perfomance Summary")
+    st.subheader("Model Performance Summary")
     st.success("Accuracy Test Results")
     algo_accuracy = Image.open(
         'images/algos_accuracy.png')
