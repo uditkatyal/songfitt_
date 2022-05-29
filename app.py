@@ -25,7 +25,7 @@ def spr_sidebar():
         home_button = st.button("About Me")
         data_button = st.button("Dataset")
         rec_button = st.button('Recommendation Engine')
-        trends_button = st.button('Prediction Model')
+        trends_button = st.button('Algorithm and Prediction')
         conc_button = st.button('Conclusion')
         blog_button = st.button('My 4 weeks Progress Report')
         st.success('By Udit Katyal')
@@ -169,37 +169,37 @@ def blog_page():
 
 
 def trends_page():
-    st.subheader("Song Popularity Prediction")
+    st.header("Calculating Algorithms Accuracy")
     st.markdown(
-        'On the basis of the features that we have in our dataframe, I will try to predict the Popularity of Songs.')
+        'Trainig the model and using Popularity as a Y-parameter to judge how accurate the algorithm comes out')
 
-    popularity_distrubution = Image.open(
-        'images/popularity_distribution.png') 
+    # popularity_distrubution = Image.open(
+    #     'images/popularity_distribution.png') 
 
-    st.image(popularity_distrubution,
-             caption='Popularity Distribution', width=500)       
+    # st.image(popularity_distrubution,
+    #          caption='Popularity Distribution', width=500)       
 
     
-    st.write("Popularity based on Time Signature")
-    st.code("Indicates how many beats are in each measure of a piece of music")   
-    st.code("4/4 has four quarter note beats and 3/4 has three quarter note beats likewise")  
+    # st.write("Popularity based on Time Signature")
+    # st.code("Indicates how many beats are in each measure of a piece of music")   
+    # st.code("4/4 has four quarter note beats and 3/4 has three quarter note beats likewise")  
 
-    st.write("#")
+    # st.write("#")
 
-    st.write("Popularity based on key")
-    st.code("Key is the major or minor scale around which a piece of music revolves")   
-    st.code("12 keys C#, C, D#, D, E, F#, F, G#, G, A#, A, B.")  
+    # st.write("Popularity based on key")
+    # st.code("Key is the major or minor scale around which a piece of music revolves")   
+    # st.code("12 keys C#, C, D#, D, E, F#, F, G#, G, A#, A, B.")  
 
-    st.write("#")
+    # st.write("#")
 
-    st.write("Popularity based on Mode")
-    st.code("Corresponds to melodic and harmonic behaviors of music")   
-    st.code("Major and Minor Modes") 
+    # st.write("Popularity based on Mode")
+    # st.code("Corresponds to melodic and harmonic behaviors of music")   
+    # st.code("Major and Minor Modes") 
 
-    st.write("#")
+    # st.write("#")
 
-    st.write("Popularity based on Mode and Key")
-    st.code("Popularity of songs collectively")   
+    # st.write("Popularity based on Mode and Key")
+    # st.code("Popularity of songs collectively")   
      
         #  Popularity based on Key and Mode
 
@@ -211,44 +211,44 @@ def trends_page():
     #  ('Comedy', 'Drama', 'Documentary'))  
     
 
-    popularity_timesignature = Image.open(
-        'images/popularity_timesignature.png')
+    # popularity_timesignature = Image.open(
+    #     'images/popularity_timesignature.png')
 
-    popularity_key = Image.open(
-        'images/popularity_key.png')
+    # popularity_key = Image.open(
+    #     'images/popularity_key.png')
 
-    popularity_mode = Image.open(
-        'images/popularity_mode.png')
+    # popularity_mode = Image.open(
+    #     'images/popularity_mode.png')
 
-    popularity_key_mode = Image.open(
-        'images/popularity_key_mode.png')
+    # popularity_key_mode = Image.open(
+    #     'images/popularity_key_mode.png')
 
    
-    col1, col2 = st.columns(2)
-    with col1:
-        st.image(popularity_timesignature,
-                 caption='Popularity Based on Time Signatures', width=400)
-    with col2:
-        st.image(popularity_key,
-                 caption='Popularity Based on Key', width=400)
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.image(popularity_timesignature,
+    #              caption='Popularity Based on Time Signatures', width=400)
+    # with col2:
+    #     st.image(popularity_key,
+    #              caption='Popularity Based on Key', width=400)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.image(popularity_mode,
-                 caption='Popularity Based on Mode', width=400)
-    with col2:
-        st.image(popularity_key_mode,
-                 caption='Popularity Based on Key and Mode', width=400)
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.image(popularity_mode,
+    #              caption='Popularity Based on Mode', width=400)
+    # with col2:
+    #     st.image(popularity_key_mode,
+    #              caption='Popularity Based on Key and Mode', width=400)
 
-    st.subheader('Feature Correlation')
-    st.markdown('**Feature Correlation** talks about dependencies between features. It is a way to understand how features are correlated with each other.')
-    st.markdown(
-        'So here value **1** depicts that the features are highly correlated with each other.')
-    st.markdown(
-        'From here we can depict that **ENERGY** and **LOUNDNESS** are much related to eachother with value of **0.82**')
-    feature_correlation = Image.open(
-        'images/feature_corelation.png')
-    st.image(feature_correlation, caption='Feature Correlation', width=900)
+    # st.subheader('Feature Correlation')
+    # st.markdown('**Feature Correlation** talks about dependencies between features. It is a way to understand how features are correlated with each other.')
+    # st.markdown(
+    #     'So here value **1** depicts that the features are highly correlated with each other.')
+    # st.markdown(
+    #     'From here we can depict that **ENERGY** and **LOUNDNESS** are much related to eachother with value of **0.82**')
+    # feature_correlation = Image.open(
+    #     'images/feature_corelation.png')
+    # st.image(feature_correlation, caption='Feature Correlation', width=900)
 
     st.header("Algorithms")
     st.subheader("Linear Regression")
@@ -294,29 +294,8 @@ AUC: 0.8573960839474465
 '''
 
     st.code(code, language='python')
-    st.subheader("Linear Support Vector Classification")
-    code = '''
-    training_LSVC = training.sample(10000)
-X_train_LSVC = training_LSVC[features]
-y_train_LSVC = training_LSVC['popularity']
-X_test_LSVC = dataframe.drop(training_LSVC.index)[features]
-X_train_LSVC, X_valid_LSVC, y_train_LSVC, y_valid_LSVC = train_test_split(
-    X_train_LSVC, y_train_LSVC, test_size = 0.2, random_state = 420)
 
-LSVC_Model = DecisionTreeClassifier()
-LSVC_Model.fit(X_train_LSVC, y_train_LSVC)
-LSVC_Predict = LSVC_Model.predict(X_valid_LSVC)
-LSVC_Accuracy = accuracy_score(y_valid_LSVC, LSVC_Predict)
-print("Accuracy: " + str(LSVC_Accuracy))
 
-LSVC_AUC = roc_auc_score(y_valid_LSVC, LSVC_Predict)
-print("AUC: " + str(LSVC_AUC))
-
-Accuracy: 0.6815
-AUC: 0.5881201752103391
-'''
-
-    st.code(code, language='python')
     st.subheader("Random Forest")
     code = '''RFC_Model = RandomForestClassifier()
 RFC_Model.fit(X_train, y_train)
@@ -331,7 +310,7 @@ Accuracy: 0.9357365912452748
 AUC: 0.879274665020435'''
     st.code(code, language='python')
 
-    st.header("Music Trends Analysis By Location")
+    st.header("Popularity By Location")
     '''
     For Input purpose I took the most listened song from my dataset **Blinding Lights**  and predicted it's popularity score
     
@@ -555,7 +534,7 @@ def conclusions_page():
     st.image(algo_auc, width=400)
     st.write("The Area Under the Curve (AUC) is the measure of the ability of a classifier to distinguish between classess. The higher the AUC, the better the performance of the model at distinguishing between the positive and negative classes.")
      
-    st.subheader("Music Trend Analysis Conclusion")
+    st.subheader("Music Trend Analysis")
     '''
     - Dataset is imbalanced with more Europian countries.
     - Few songs have managed to make in 96% of Top Charts of all countries.
