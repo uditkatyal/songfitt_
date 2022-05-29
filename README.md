@@ -1,26 +1,58 @@
-# SONGFITT_
+# SONGFITT - Music Recommendation System
+## Submission for Microsoft Intern Engage 2022
+
+# Overview
 SONGFITT is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.
 
 Along with the rapid expansion of digital music formats, managing and searching for songs has become signiﬁcant. The purpose of this project is to build a recommendation system to allow users to discover music based on their listening preferences. Therefore in this model I focused on the public opinion to discover and recommend music.
 
-# Introduction
-Recommendation systems are now central to music streaming platforms, which are rapidly increasing in listenership and becoming the top source of revenue for the music industry.The goal of a this system is to help consumers and the music industry with the discovery and delivery of music.
+## Features: 
+1.	Song Recommendation (minimalistic feature)
+2.	Recommendation on the basis of Genre and Year of Release (old or new)
+3.	Depicting the Importance of Acousticness, Loudness, Tempo, Liveness, danceability and valence using Feature Correlation
+4.	Used Spotify API to play songs on the WebApp
+5.	Redirecting to the recommended Songs on the your personal Spotify app with one click.
+6.	Calculated the Accuracy and Area under curve of each algorithm to see which is best for Prediction and Recommendation
+7.	Depicted a 3-D earth Model predicting popularity of most famous song(Blinding Lights) in my dataset in different location.
 
-## Installation
-Prefer creating a virtual environment to avoid any issues
-- Use pip to install the requirements.
+## Tech Stack and Softwares used
+1. `Frontend` : Streamlit
+2. `Backend` : Python, scikit-learn, pandas, Numpy and Plotly.
+3. `ML model` : Jupyter Notebook
+4. `IDE` : VsCode
+6. `Version Control` : Git
+7. `Deployment` : Streamlit-Share
 
-~~~bash
-pip install -r requirements.txt
-~~~
+## Screenshots
+### App UI
+![Screenshot (105)](https://github.com/uditkatyal/songfitt_/blob/main/images/screenshot1.png)
 
-## Usage
+### 3-D Model Depicting Popularity of the Most popular song in my dataset by location
 
-To run the web server, simply execute streamlit with the app.py file:
+![Screenshot (107)](https://github.com/uditkatyal/songfitt_/blob/main/images/screenshot2.png)
 
-```bash
-streamlit run app.py
-```
+## Installation/Environment Setup
+1. Clone this repository in your local system.
+* Open terminal in a new folder and enter the command given below.
+   ```
+   git clone https://github.com/uditkatyal/songfitt_
+   ```
+
+2. Make sure that Python is installed and updated in your machine.
+
+3. Install dependencies.
+* Open terminal in the cloned folder and enter the command given below.
+   ```
+   pip install -r requirements.txt
+   ```
+  
+4. Run the project.
+* While you are still inside the cloned folder, write the following command in terminal to run the website locally. 
+   ```
+   streamlit run app.py
+   ```
+   
+5. If everything is done in order, the app will be running at "http://localhost:8501/"
 
 ## If You want to run the ML Models
 - Do add the SpotGenTrack file in the main folder 
@@ -41,13 +73,6 @@ streamlit run app.py
   The model is initially trained with dataset provided and then recommends the songs as per user input.
   
   ![Screenshot (105)](https://github.com/uditkatyal/songfitt_/blob/main/images/workflow_model.png)
-## Screenshots
-### App UI
-![Screenshot (105)](https://github.com/uditkatyal/songfitt_/blob/main/images/screenshot1.png)
-
-### 3-D Model Depicting Popularity of the Most popular song in my dataset by location
-
-![Screenshot (107)](https://github.com/uditkatyal/songfitt_/blob/main/images/screenshot2.png)
 
 
 ## Dataset Link
@@ -64,21 +89,13 @@ streamlit run app.py
 - https://www.researchgate.net/publication/324652918_Recommendation_of_Job_Offers_Using_Random_Forests_and_Support_Vector_Machines
 
 
-## Built With
-
-### Frontend Technology
-- [streamlit]() - Streamlit is an open-source app framework for Machine Learning and Data Science teams. Create beautiful data apps in hours, not weeks.
-
-### Backend Technologies
-- [pandas]() - pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
-- [Pillow]() - PIL is the Python Imaging Library by Fredrik Lundh and Contributors.
-- [scikit-learn]() - Scikit-learn is a free software machine learning library for the Python programming language.
-- [Plotly]() - An open-source, interactive data visualization library for Python.
-- [Numpy]() - NumPy is the fundamental package for array computing with Python.
-- [Three Graphs]() - 3-D Charts for the web.
+## Video Demo
+The demo video for the Web Application: [SONGFITT | Video](https://www.youtube.com/watch?v=hLn_rFlkQME)
 
 ## Conclusion and Future Scope
 
 - In this project, I have presented a novel framework for Music recommendation that is driven by data
 and simple effective recommendation system for generating songs as per users choice.
 - Moving forward, I will use a larger Spotify database by using the Spotify API to collect my own data, and explore different algorithms to predict popularity score rather than doing binary classification.
+
+Thank you, Microsoft and Acehacker Team for such an amazing program ❤️
