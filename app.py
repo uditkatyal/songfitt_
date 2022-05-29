@@ -540,7 +540,7 @@ def conclusions_page():
 
     - Efficient Data Processing -- Initially I decided to take complete SpotifyGenTrack dataset (approximately 773.84 MB of data). But it became very important to enhance the data quality unless the recommendation might run to unnecessary bugs and outcomes. Therefore after many attempts, generated a filteredTrack csv which had the exact and refined dataset that was required for recommendation and predicting popularity of songs.
 
-    - Unsupervised Learning -- Decided to take an different approach where I Explored different families of cluster algorithms and learning about advantages and disadvantages to make the best selection as well as deciding which measure distance makes the most sense for our purposes.
+    - Unsupervised Learning -- Decided to take an different approach where I Explored different families of cluster algorithms and learning about advantages and disadvantages to make the best selection.
 
     '''
     
