@@ -345,7 +345,7 @@ AUC: 0.879274665020435'''
 
   
     '''
-    Click to View -:  [ 3-D Model ](http://threegraphs.com/charts/preview/9036/embed/)
+    Click to View if on Hosted URL-:  [ 3-D Model ](http://threegraphs.com/charts/preview/9036/embed/)
     '''
     st.text("To view the model on WebApp run the application on Local Host")
     
