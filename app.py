@@ -169,7 +169,7 @@ def blog_page():
 
 
 def trends_page():
-    st.header("Calculating Algorithms Accuracy")
+    st.header("1. Calculate Algorithms Accuracy")
     st.markdown(
         'Trainig the model and using Popularity as a Y-parameter to judge how accurate the algorithm comes out')
 
@@ -310,7 +310,7 @@ Accuracy: 0.9357365912452748
 AUC: 0.879274665020435'''
     st.code(code, language='python')
 
-    st.header("Popularity By Location")
+    st.header("2. Popularity By Location")
     '''
     For Input purpose I took the most listened song from my dataset **Blinding Lights**  and predicted it's popularity score
     
