@@ -22,11 +22,11 @@ def spr_sidebar():
     with st.sidebar:
         # st.image(SPR_SPOTIFY_URL, width=60)
         st.info('**SONGFITT**')
-        home_button = st.button("Home")
-        data_button = st.button("About Dataset")
-        rec_button = st.button('Recommendations')
-        trends_button = st.button('Features')
-        conc_button = st.button('Conclusions')
+        home_button = st.button("About Me")
+        data_button = st.button("Dataset")
+        rec_button = st.button('Recommendation Engine')
+        trends_button = st.button('Prediction Model')
+        conc_button = st.button('Conclusion')
         blog_button = st.button('My 4 weeks Progress Report')
         st.success('By Udit Katyal')
         st.session_state.log_holder = st.empty()
@@ -332,6 +332,16 @@ AUC: 0.879274665020435'''
 
     top_10_tracks = Image.open("images/top_tracks.png")
     st.image(top_10_tracks , caption ="Top 1o Tracks", width = 800)
+
+    st.header("3-D Earth Model")
+    st.text("Popularity by Location")
+
+  
+    '''
+    Click to View -:  [ 3-D Model ](http://threegraphs.com/charts/preview/9036/embed/)
+    '''
+    st.text("To view the model on WebApp run the application on Local Host")
+    
     
     st.code("Popularity ranges from 0 - 100 but to make visible on map 1 Unit = 1000 Unit, so 32200 score = 32.2 popularity")
     components.iframe("http://threegraphs.com/charts/preview/9036/embed/", width = 1000, height = 700)
@@ -483,10 +493,11 @@ def rec_page():
     else:
         st.write("No songs left to recommend")
 
-    st.subheader("Algorithms that I have used in this filtering are the k-nearest neighbours and Random Forest")
+    st.code("Algorithms that I have used in this filtering are the k-nearest neighbours and Random Forest")       
 
-   
-    # Plot!
+    
+
+    st.subheader("Graph Representing Audio Features Importance")
     random_forest_audio_importance = Image.open('images/random_forest_audio_importance_feature.jpg')
     st.image(random_forest_audio_importance, caption ="random_forest_audio_feature_importance", width = 900)
 
@@ -494,29 +505,37 @@ def rec_page():
 
 
 def home_page():
-    st.header('Welcome to SONGFITT (SS)')
-    st.markdown('---')
-    st.write(
-        'Hi Microsoft, I am Udit Katyal and this is my webApp for Microsoft engage 2022 Program')
-    st.write('Check this demo video to see how to use this Web App:')
-
     st.subheader('About Me')
+    
+    
+    col1, col2 = st.columns(2)
 
-    st.subheader('Udit Katyal')
-    image = Image.open(
+    with col1:
+        st.write(
+        'Hi Microsoft, I am Udit Katyal and this is my WebApp for Microsoft engage 2022 Program. I am in 2nd Year and pursuing BTech IT from Akhilesh Das Gupta Institute of Technology and Management, New Delhi India.')
+        st.write('  Knowledgeable in the Web Application, services and product management. Motivated to gain more industrial experience with a growth oriented and technically advanced organizations.')
+        st.write('Check this demo video to see how to use this Web App:')
+        st.write("Check out my [Github Repository](https://github.com/uditkatyal/songfitt_)")
+        
+
+    with col2:
+        image = Image.open(
         'images/img1.jpg')
-    st.image(image, caption='Udit Katyal', width=200)
+        st.image(image, caption='Udit Katyal', width=300)
 
-    st.write("Check out my [Github Repository](https://github.com/uditkatyal/songfitt_)")
-    st.write('Hi I am Udit Katyal, a sophomore pursuing Btech IT from Akhilesh Das Gupta Institute of Technology and Management, New Delhi India. ')
+
+    
+
+    
+    
+
+    
 
 
 def conclusions_page():
-    st.header('Conclusions')
     
-    '''
-    #### Problems I ran through
-    '''
+    
+    st.header("Problems I ran through")
     '''
     - Data Collection -- Even though the core dataset I used was provided by Spotify, it was needed to go and look for other data sources to enhance the data and combine it with the core data set. 
 
@@ -526,8 +545,9 @@ def conclusions_page():
 
     '''
     st.success("Performed the accuracy tests and these are the results received")
-
-    st.header("Model Perfomance Summary")
+    
+    st.header('Conclusion')
+    st.subheader("Model Perfomance Summary")
 
     algo_accuracy = Image.open(
         'images/algos_accuracy.png')
@@ -560,12 +580,13 @@ st.session_state.app_mode = 'recommend'
 def main():
     
     spr_sidebar()
-    st.header("SONGFITT (SS)")
+    st.header("SONGFITT (SF)")
     st.markdown(
-        '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.') 
+        '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.  ') 
+    st.markdown('Along with the rapid expansion of digital music formats, managing and searching for songs has become signiﬁcant. The purpose of this project was to build a recommendation system to allow users to discover music based on their listening preferences. Therefore in this model I focused on the public opinion to discover and recommend music.')    
 
-    cover_image = Image.open("images/cover.jpg")
-    st.image(cover_image , width = 600)     
+    # cover_image = Image.open("images/cover.jpg")
+    # st.image(cover_image , width = 400)     
     # st.code("<- Go to the Home Button ")
     if st.session_state.app_mode == 'dataset':
         dataset_page()
