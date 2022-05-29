@@ -8,12 +8,20 @@ Along with the rapid expansion of digital music formats, managing and searching 
 
 ## Features: 
 1.	Song Recommendation (minimalistic feature)
+	
 2.	Recommendation on the basis of Genre and Year of Release (old or new)
+	
 3.	Depicting the Importance of Acousticness, Loudness, Tempo, Liveness, danceability and valence using Feature Correlation
+	
 4.	Used Spotify API to play songs on the WebApp
+
 5.	Redirecting to the recommended Songs on the your personal Spotify app with one click.
+	
 6.	Calculated the Accuracy and Area under curve of each algorithm to see which is best for Prediction and Recommendation
+	
 7.	Depicted a 3-D earth Model predicting popularity of most famous song(Blinding Lights) in my dataset in different location.
+
+8. Continious update on the deployed site
 
 ## Tech Stack and Softwares used
 1. `Frontend` : Streamlit
