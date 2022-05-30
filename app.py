@@ -1,4 +1,5 @@
 import streamlit as st
+# Basic Streamlit Settings
 st.set_page_config(page_title='SongFitt', layout = 'wide', initial_sidebar_state = 'auto')
 from streamlit_option_menu import option_menu
 import streamlit.components.v1 as components
@@ -13,11 +14,11 @@ import plotly.figure_factory as ff
 import base64
 import streamlit.components.v1 as components
 
-
+# Loading css file
 local_css("style.css")
 
 
-
+# Sidebar Section
 def spr_sidebar():
     with st.sidebar:
         # st.image(SPR_SPOTIFY_URL, width=60)
@@ -25,9 +26,9 @@ def spr_sidebar():
         home_button = st.button("About Me")
         data_button = st.button("Dataset")
         rec_button = st.button('Recommendation Engine')
-        trends_button = st.button('Algorithm and Prediction')
+        algo_button = st.button('Algorithm and Prediction')
         conc_button = st.button('Conclusion')
-        blog_button = st.button('My 4 weeks Progress Report')
+        report_button = st.button('My 4 weeks Progress Report')
         st.success('By Udit Katyal')
         st.session_state.log_holder = st.empty()
         # log_output('None')
@@ -35,16 +36,16 @@ def spr_sidebar():
             st.session_state.app_mode = 'home'
         if data_button:
             st.session_state.app_mode = 'dataset'
-        if trends_button:
-            st.session_state.app_mode = 'trends'
+        if algo_button:
+            st.session_state.app_mode = 'algo'
         if rec_button:
             st.session_state.app_mode = 'recommend'
         if conc_button:
             st.session_state.app_mode = 'conclusions'
-        if blog_button:
-            st.session_state.app_mode = 'blog'
+        if report_button:
+            st.session_state.app_mode = 'report'
 
-
+# Dataset Page
 def dataset_page():
     st.markdown("<br>", unsafe_allow_html=True)
     """
@@ -106,25 +107,18 @@ def dataset_page():
     st.dataframe(dataframe1)
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # st.subheader('Total VS New Tracks in each json file')
-    # st.plotly_chart(get_num_tracks_fig('total'), use_container_width=True)
-    # st.subheader('Existing VS New Tracks in each json file')
-    # st.plotly_chart(get_num_tracks_fig('existing'), use_container_width=True)
 
-
+# Footer Section
 def spr_footer():
     st.markdown('---')
     st.markdown(
         '© Copyright 2021 - SongFitt By Udit Katyal')
 
 
-def blog_page():
+# 4_week_report_page
+def report_page():
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-    # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="400" height="1000" type="application/pdf"></iframe>'
-        
-    # st.markdown(pdf_display, unsafe_allow_html=True)
     st.header("Problems I ran through")
     '''
     - Data Collection -- Even though the core dataset I used was provided by Spotify, it was needed to go and look for other data sources to enhance the data and combine it with the core data set. 
@@ -153,162 +147,73 @@ def blog_page():
     show_pdf("4_weeks_progress_report.pdf")
 
     
-
-    # def st_display_pdf(pdf_file):
-    #      with open(pdf_file,"rb") as f:
-    #          base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-    #      pdf_display = f'<embed src=”images/abc.pdf;base64,{base64_pdf}” width=”700″ height=”1000″ type=”application/pdf”>’
-    #      st.markdown(pdf_display, unsafe_allow_html = True)
-
-
-        
-   
-
-    
-# @st.cache(suppress_st_warning=True)
-
-
-def trends_page():
+# Algorithm and Prediction Page 
+def algo_page():
     st.header("1. Calculate Algorithms Accuracy")
     st.markdown(
         'Trainig the model and using Popularity as a Y-parameter to judge how accurate the algorithm comes out')
 
-    # popularity_distrubution = Image.open(
-    #     'images/popularity_distribution.png') 
-
-    # st.image(popularity_distrubution,
-    #          caption='Popularity Distribution', width=500)       
-
-    
-    # st.write("Popularity based on Time Signature")
-    # st.code("Indicates how many beats are in each measure of a piece of music")   
-    # st.code("4/4 has four quarter note beats and 3/4 has three quarter note beats likewise")  
-
-    # st.write("#")
-
-    # st.write("Popularity based on key")
-    # st.code("Key is the major or minor scale around which a piece of music revolves")   
-    # st.code("12 keys C#, C, D#, D, E, F#, F, G#, G, A#, A, B.")  
-
-    # st.write("#")
-
-    # st.write("Popularity based on Mode")
-    # st.code("Corresponds to melodic and harmonic behaviors of music")   
-    # st.code("Major and Minor Modes") 
-
-    # st.write("#")
-
-    # st.write("Popularity based on Mode and Key")
-    # st.code("Popularity of songs collectively")   
-     
-        #  Popularity based on Key and Mode
-
-    # t = "<div>Hello there my <span class='highlight blue'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
-    # st.markdown(t, unsafe_allow_html=True)
-    
-    # genre = st.radio(
-    #  "What's your favorite movie genre",
-    #  ('Comedy', 'Drama', 'Documentary'))  
-    
-
-    # popularity_timesignature = Image.open(
-    #     'images/popularity_timesignature.png')
-
-    # popularity_key = Image.open(
-    #     'images/popularity_key.png')
-
-    # popularity_mode = Image.open(
-    #     'images/popularity_mode.png')
-
-    # popularity_key_mode = Image.open(
-    #     'images/popularity_key_mode.png')
-
-   
-    # col1, col2 = st.columns(2)
-    # with col1:
-    #     st.image(popularity_timesignature,
-    #              caption='Popularity Based on Time Signatures', width=400)
-    # with col2:
-    #     st.image(popularity_key,
-    #              caption='Popularity Based on Key', width=400)
-
-    # col1, col2 = st.columns(2)
-    # with col1:
-    #     st.image(popularity_mode,
-    #              caption='Popularity Based on Mode', width=400)
-    # with col2:
-    #     st.image(popularity_key_mode,
-    #              caption='Popularity Based on Key and Mode', width=400)
-
-    # st.subheader('Feature Correlation')
-    # st.markdown('**Feature Correlation** talks about dependencies between features. It is a way to understand how features are correlated with each other.')
-    # st.markdown(
-    #     'So here value **1** depicts that the features are highly correlated with each other.')
-    # st.markdown(
-    #     'From here we can depict that **ENERGY** and **LOUNDNESS** are much related to eachother with value of **0.82**')
-    # feature_correlation = Image.open(
-    #     'images/feature_corelation.png')
-    # st.image(feature_correlation, caption='Feature Correlation', width=900)
-
     st.header("Algorithms")
     st.subheader("Linear Regression")
     code = '''LR_Model = LogisticRegression()
-LR_Model.fit(X_train, y_train)
-LR_Predict = LR_Model.predict(X_valid)
-LR_Accuracy = accuracy_score(y_valid, LR_Predict)
-print("Accuracy: " + str(LR_Accuracy))
+    LR_Model.fit(X_train, y_train)
+    LR_Predict = LR_Model.predict(X_valid)
+    LR_Accuracy = accuracy_score(y_valid, LR_Predict)
+    print("Accuracy: " + str(LR_Accuracy))
 
-LR_AUC = roc_auc_score(y_valid, LR_Predict)
-print("AUC: " + str(LR_AUC))
+    LR_AUC = roc_auc_score(y_valid, LR_Predict)
+    print("AUC: " + str(LR_AUC))
 
-Accuracy: 0.7497945543198379
-AUC: 0.5'''
+    Accuracy: 0.7497945543198379
+    AUC: 0.5'''
     st.code(code, language='python')
+
    
     st.subheader("K-Nearest Neighbors Classifier")
     code = '''KNN_Model = KNeighborsClassifier()
-KNN_Model.fit(X_train, y_train)
-KNN_Predict = KNN_Model.predict(X_valid)
-KNN_Accuracy = accuracy_score(y_valid, KNN_Predict)
-print("Accuracy: " + str(KNN_Accuracy))
+    KNN_Model.fit(X_train, y_train)
+    KNN_Predict = KNN_Model.predict(X_valid)
+    KNN_Accuracy = accuracy_score(y_valid, KNN_Predict)
+    print("Accuracy: " + str(KNN_Accuracy))
 
-KNN_AUC = roc_auc_score(y_valid, KNN_Predict)
-print("AUC: " + str(KNN_AUC))
+    KNN_AUC = roc_auc_score(y_valid, KNN_Predict)
+    print("AUC: " + str(KNN_AUC))
 
-Accuracy: 0.7763381361967896
-AUC: 0.6890904291795135'''
+    Accuracy: 0.7763381361967896
+    AUC: 0.6890904291795135'''
     st.code(code, language='python')
+
 
     st.subheader("Decision Tree Classifier")
     code = '''DT_Model = DecisionTreeClassifier()
-DT_Model.fit(X_train, y_train)
-DT_Predict = DT_Model.predict(X_valid)
-DT_Accuracy = accuracy_score(y_valid, DT_Predict)
-print("Accuracy: " + str(DT_Accuracy))
+    DT_Model.fit(X_train, y_train)
+    DT_Predict = DT_Model.predict(X_valid)
+    DT_Accuracy = accuracy_score(y_valid, DT_Predict)
+    print("Accuracy: " + str(DT_Accuracy))
 
-DT_AUC = roc_auc_score(y_valid, DT_Predict)
-print("AUC: " + str(DT_AUC))
+    DT_AUC = roc_auc_score(y_valid, DT_Predict)
+    print("AUC: " + str(DT_AUC))
 
-Accuracy: 0.8742672437407549
-AUC: 0.8573960839474465
-'''
-
+    Accuracy: 0.8742672437407549
+    AUC: 0.8573960839474465
+    '''
     st.code(code, language='python')
 
-
+    
     st.subheader("Random Forest")
     code = '''RFC_Model = RandomForestClassifier()
-RFC_Model.fit(X_train, y_train)
-RFC_Predict = RFC_Model.predict(X_valid)
-RFC_Accuracy = accuracy_score(y_valid, RFC_Predict)
-print("Accuracy: " + str(RFC_Accuracy))
+    RFC_Model.fit(X_train, y_train)
+    RFC_Predict = RFC_Model.predict(X_valid)
+    RFC_Accuracy = accuracy_score(y_valid, RFC_Predict)
+    print("Accuracy: " + str(RFC_Accuracy))
 
-RFC_AUC = roc_auc_score(y_valid, RFC_Predict)
-print("AUC: " + str(RFC_AUC))
+    RFC_AUC = roc_auc_score(y_valid, RFC_Predict)
+    print("AUC: " + str(RFC_AUC))
 
-Accuracy: 0.9357365912452748
-AUC: 0.879274665020435'''
+    Accuracy: 0.9357365912452748
+    AUC: 0.879274665020435'''
     st.code(code, language='python')
+
 
     st.header("2. Popularity By Location")
     '''
@@ -318,24 +223,22 @@ AUC: 0.879274665020435'''
 
     top_10_tracks = Image.open("images/top_tracks.png")
     st.image(top_10_tracks , caption ="Top 1o Tracks", width = 800)
-
-    st.header("3-D Earth Model")
     
-
-  
+    # 3-D EARTH MODEL
+    st.header("3-D Earth Model")
     '''
-    Click to View if on Hosted URL-:  [ 3-D Model ](http://threegraphs.com/charts/preview/9036/embed/)
+    Click to View if on Hosted URL-:  [ 3-D Earth Model ](http://threegraphs.com/charts/preview/9036/embed/)
     '''
     st.text("To view the model on WebApp run the application on Local Host")
     
-    st.text("Popularity by Location")
-    st.code("Popularity ranges from 0 - 100 but to make visible on map 1 Unit = 1000 Unit, so 32200 score = 32.2 popularity")
+    st.code("Popularity ranges from 0 - 100 but to make visible on map 1 Unit = 1000 Unit, for instance 32200 score = 32.2 popularity")
     components.iframe("http://threegraphs.com/charts/preview/9036/embed/", width = 1000, height = 700)
 
    
- 
 
-# @st.cache(allow_output_mutation=True)
+
+# Load Data and n_neighbors_uri_audio are helper functions inside Recommendation Page
+# Loads the track from filtered_track_df.csv file
 def load_data():
     df = pd.read_csv(
         "filtered_track_df.csv")
@@ -357,6 +260,7 @@ genre_names = ['Dance Pop', 'Electronic', 'Electropop', 'Hip Hop',
 audio_feats = ["acousticness", "danceability",
                "energy", "instrumentalness", "valence", "tempo"]
 
+# Fetches the Nearest Song according to Genre start_year and end year.
 def n_neighbors_uri_audio(genre, start_year, end_year, test_feat):
     genre = genre.lower()
     genre_data = exploded_track_df[(exploded_track_df["genres"] == genre) & (
@@ -374,6 +278,7 @@ def n_neighbors_uri_audio(genre, start_year, end_year, test_feat):
     return uris, audios
 
 
+# Recommendation Page
 
 def rec_page():
     
@@ -420,7 +325,6 @@ def rec_page():
             track = """<iframe src="https://open.spotify.com/embed/track/{}" width="260" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>""".format(
                 uri)
             tracks.append(track)
-    # st.write(tracks)
     if 'previous_inputs' not in st.session_state:
         st.session_state['previous_inputs'] = [
             genre, start_year, end_year] + test_feat
@@ -487,8 +391,8 @@ def rec_page():
     random_forest_audio_importance = Image.open('images/random_forest_audio_importance_feature.jpg')
     st.image(random_forest_audio_importance, caption ="random_forest_audio_feature_importance", width = 900)
 
-   
 
+# Home Page
 
 def home_page():
     st.subheader('About Me')
@@ -509,13 +413,7 @@ def home_page():
         st.image(image, caption='Udit Katyal', width=300)
 
 
-    
-
-    
-    
-
-    
-
+# Conclusion Page
 
 def conclusions_page():
 
@@ -549,7 +447,6 @@ def conclusions_page():
 
 st.session_state.app_mode = 'recommend'
 
-# @st.cache()
 def main():
     
     spr_sidebar()
@@ -557,36 +454,18 @@ def main():
     st.markdown(
         '**SONGFITT** is a online Robust Music Recommendation Engine where in you can finds the best songs that suits your taste.  ') 
     st.markdown('Along with the rapid expansion of digital music formats, managing and searching for songs has become signiﬁcant. The purpose of this project is to build a recommendation system to allow users to discover music based on their listening preferences. Therefore in this model I focused on the public opinion to discover and recommend music.')    
-
-    # cover_image = Image.open("images/cover.jpg")
-    # st.image(cover_image , width = 400)     
-    # st.code("<- Go to the Home Button ")
+    
     if st.session_state.app_mode == 'dataset':
         dataset_page()
 
-    if st.session_state.app_mode == 'trends':
-        trends_page()
+    if st.session_state.app_mode == 'algo':
+        algo_page()
 
     if st.session_state.app_mode == 'recommend':
-        # if 'spr' not in st.session_state:
-        #  st.error('Please select an option in User Input page')
         rec_page()
 
-        # with st.form(key="form"):
-        #     files = st.file_uploader("Files", accept_multiple_files=True)
-        #     submit_button = st.form_submit_button(label="Submit choice")
-
-        # if submit_button:
-        #     if files:
-        #      st.markdown("You chose the files {}".format(", ".join([f.name for f in files])))
-        #     else:
-        #      st.markdown("You did not choose any file but clicked on 'Submit choice' anyway")
-        # else:
-        #   st.markdown("You did not click on submit button.")
-        
-
-    if st.session_state.app_mode == 'blog':
-        blog_page()
+    if st.session_state.app_mode == 'report':
+        report_page()
 
     if st.session_state.app_mode == 'conclusions':
         conclusions_page()
@@ -602,4 +481,3 @@ if __name__ == '__main__':
     main()
 
 
-# # HOME PAGE

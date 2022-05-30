@@ -48,8 +48,9 @@ streamlit run app.py
 
 
 ## Built With
-
+  Frontend Technology
 - [streamlit]() - Streamlit is an open-source app framework for Machine Learning and Data Science teams. Create beautiful data apps in hours, not weeks.
+   Backend Technology
 - [pandas]() - pandas is a fast, powerful, flexible and easy to use open source data analysis and manipulation tool, built on top of the Python programming language.
 - [Pillow]() - PIL is the Python Imaging Library by Fredrik Lundh and Contributors.
 - [scikit-learn]() - Scikit-learn is a free software machine learning library for the Python programming language.
