@@ -13,6 +13,7 @@ import pydeck as pdk
 import plotly.figure_factory as ff
 import base64
 import streamlit.components.v1 as components
+import webbrowser
 
 # Loading css file
 local_css("style.css")
@@ -227,8 +228,15 @@ def algo_page():
     # 3-D EARTH MODEL
     st.header("3-D Earth Model")
     '''
-    Click to View if on Hosted URL-:  [ 3-D Earth Model ](http://threegraphs.com/charts/preview/9036/embed/)
+    THREE GRAPH -:  [ 3-D EARTH MODEL ](http://threegraphs.com/charts/preview/9036/embed/)
+    
     '''
+    
+    # url = 'http://threegraphs.com/charts/preview/9036/embed/'
+
+    # if st.button('3-D Earth Model'):
+    #     webbrowser.open_new_tab(url)
+    
     st.text("To view the model on WebApp run the application on Local Host")
     
     st.code("Popularity ranges from 0 - 100 but to make visible on map 1 Unit = 1000 Unit, for instance 32200 score = 32.2 popularity")
